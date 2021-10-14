@@ -33,7 +33,7 @@ TestCase subclass: #CustomerBookTest
 afirmarQue: arg1 enMenos: arg2
 	self assert: arg1 timeToRun < arg2.! !
 
-!CustomerBookTest methodsFor: 'tests'!
+!CustomerBookTest methodsFor: 'tests' stamp: 'YS 10/14/2021 15:39:05'!
 afirmarQueLibroDeCliente: arg1 activos: arg2 suspendidos: arg3 totalDeClientes: arg4
 	self
 		assert: arg2
@@ -43,8 +43,7 @@ afirmarQueLibroDeCliente: arg1 activos: arg2 suspendidos: arg3 totalDeClientes: 
 		equals: arg1 numberOfSuspendedCustomers.
 	self
 		assert: arg4
-		equals: arg1 numberOfCustomers.
-	self deny: (arg1 includesCustomerNamed: 'paulMcCartney').! !
+		equals: arg1 numberOfCustomers.! !
 
 !CustomerBookTest methodsFor: 'tests'!
 afirmarQueLibroDeCliente: arg1 contieneCant: arg2 contieneNombre: arg3
@@ -239,4 +238,3 @@ customerAlreadyExistsErrorMessage
 !CustomerBook class methodsFor: 'error messages'!
 customerCanNotBeEmptyErrorMessage
 	^ 'Customer Name Cannot Be Empty'.! !
-
