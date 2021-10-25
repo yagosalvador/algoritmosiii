@@ -364,27 +364,27 @@ Numero subclass: #Entero
 	poolDictionaries: ''
 	category: 'Numeros-Parte2-Ejercicio'!
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'YS 10/25/2021 13:50:13'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'YS 10/25/2021 17:54:41'!
 * aMultiplier 
 	
-	^aMultiplier multiplicarEntero: self.
+	^aMultiplier serMultiplicadoPorUnEntero: self.
 	! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'YS 10/25/2021 13:38:46'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'YS 10/25/2021 18:11:02'!
 + anAdder 
 	
-	^anAdder sumarEntero: self.
+	^anAdder serSumadoPorUnEntero: self.
 ! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'YS 10/25/2021 14:56:12'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'YS 10/25/2021 18:15:24'!
 - aSubtrahend 
 
-	^ aSubtrahend restarEntero: self.! !
+	^ aSubtrahend restarAEntero: self.! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'YS 10/25/2021 13:51:43'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'YS 10/25/2021 18:14:52'!
 / aDivisor 
 	
-	^aDivisor dividirEntero: self.! !
+	^aDivisor dividirAEntero: self.! !
 
 !Entero methodsFor: 'arithmetic operations' stamp: 'HAW 9/24/2018 08:47:50'!
 fibonacci
@@ -453,54 +453,54 @@ isZero
 	
 	^self class with: value // aDivisor integerValue! !
 
-!Entero methodsFor: 'arithmetic operations - private' stamp: 'YS 10/25/2021 14:13:40'!
-dividirEntero: entero
-	^Fraccion with: entero over: self.! !
+!Entero methodsFor: 'arithmetic operations - private' stamp: 'YS 10/25/2021 18:20:50'!
+dividirAEntero: enteroADividir
+	^Fraccion with: enteroADividir over: self.! !
 
-!Entero methodsFor: 'arithmetic operations - private' stamp: 'YS 10/25/2021 14:19:05'!
-dividirFraccion: fraccion
+!Entero methodsFor: 'arithmetic operations - private' stamp: 'YS 10/25/2021 18:21:02'!
+dividirAFraccion: fraccionADividir
 	
 	| newDenominator |
 	
-	newDenominator := self * fraccion denominator.
-	^ fraccion numerator /  newDenominator .! !
+	newDenominator := self * fraccionADividir denominator.
+	^ fraccionADividir numerator /  newDenominator .! !
 
 !Entero methodsFor: 'arithmetic operations - private' stamp: 'HernanWilkinson 5/7/2016 21:00'!
 greatestCommonDivisorWith: anEntero 
 	
 	^self class with: (value gcd: anEntero integerValue)! !
 
-!Entero methodsFor: 'arithmetic operations - private' stamp: 'YS 10/25/2021 13:48:39'!
-multiplicarEntero: entero
-	^self class with: value * entero integerValue.! !
+!Entero methodsFor: 'arithmetic operations - private' stamp: 'YS 10/25/2021 18:23:08'!
+restarAEntero: unEntero
+	^ self class with: unEntero integerValue - value.! !
 
-!Entero methodsFor: 'arithmetic operations - private' stamp: 'YS 10/25/2021 13:49:24'!
-multiplicarFraccion: fraccion
+!Entero methodsFor: 'arithmetic operations - private' stamp: 'YS 10/25/2021 18:23:16'!
+restarAFraccion: unaFraccion
+	^Fraccion with: unaFraccion numerator - (self * unaFraccion denominator) over: unaFraccion denominator.! !
+
+!Entero methodsFor: 'arithmetic operations - private' stamp: 'YS 10/25/2021 18:21:32'!
+serMultiplicadoPorUnEntero: unEntero
+	^self class with: value * unEntero integerValue.! !
+
+!Entero methodsFor: 'arithmetic operations - private' stamp: 'YS 10/25/2021 18:21:39'!
+serMultiplicadoPorUnaFraccion: unaFraccion
 	| newNumerator |
-	newNumerator := fraccion numerator * self.
-	^ newNumerator / fraccion denominator.! !
+	newNumerator := unaFraccion numerator * self.
+	^ newNumerator / unaFraccion denominator.! !
 
-!Entero methodsFor: 'arithmetic operations - private' stamp: 'YS 10/25/2021 14:24:46'!
-restarEntero: entero
-	^ self class with: entero integerValue - value.! !
+!Entero methodsFor: 'arithmetic operations - private' stamp: 'YS 10/25/2021 18:21:49'!
+serSumadoPorUnEntero: unEntero
 
-!Entero methodsFor: 'arithmetic operations - private' stamp: 'YS 10/25/2021 14:46:27'!
-restarFraccion: fraccion
-	^Fraccion with: fraccion numerator - (self * fraccion denominator) over: fraccion denominator.! !
-
-!Entero methodsFor: 'arithmetic operations - private' stamp: 'YS 10/25/2021 13:39:07'!
-sumarEntero: entero
-
-	^self class with: value + entero integerValue
+	^self class with: value + unEntero integerValue
 ! !
 
-!Entero methodsFor: 'arithmetic operations - private' stamp: 'YS 10/25/2021 13:40:46'!
-sumarFraccion: fraccion
+!Entero methodsFor: 'arithmetic operations - private' stamp: 'YS 10/25/2021 18:21:58'!
+serSumadoPorUnaFraccion: unaFraccion
 	"comment stating purpose of message"
 
 	| newNumerator |
-	newNumerator := (self * fraccion denominator) + fraccion numerator.
-	^ newNumerator / fraccion denominator.! !
+	newNumerator := (self * unaFraccion denominator) + unaFraccion numerator.
+	^ newNumerator / unaFraccion denominator.! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -528,27 +528,27 @@ Numero subclass: #Fraccion
 	poolDictionaries: ''
 	category: 'Numeros-Parte2-Ejercicio'!
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'YS 10/25/2021 13:50:21'!
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'YS 10/25/2021 18:10:35'!
 * aMultiplier 
 	
-	^aMultiplier multiplicarFraccion: self.
+	^aMultiplier serMultiplicadoPorUnaFraccion: self.
 	! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'YS 10/25/2021 13:28:22'!
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'YS 10/25/2021 18:11:14'!
 + anAdder 	
-	^ anAdder sumarFraccion: self. 
+	^ anAdder serSumadoPorUnaFraccion: self. 
 
 	! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'YS 10/25/2021 14:56:03'!
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'YS 10/25/2021 18:15:37'!
 - aSubtrahend 
-	^aSubtrahend restarFraccion: self .
+	^aSubtrahend restarAFraccion: self .
 ! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'YS 10/25/2021 13:51:22'!
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'YS 10/25/2021 18:15:10'!
 / aDivisor 
 	
-	^aDivisor dividirFraccion: self.! !
+	^aDivisor dividirAFraccion: self.! !
 
 
 !Fraccion methodsFor: 'comparing' stamp: 'HernanWilkinson 5/7/2016 20:42'!
@@ -609,63 +609,63 @@ printOn: aStream
 		print: denominator ! !
 
 
-!Fraccion methodsFor: 'arithmetic operations -- private' stamp: 'YS 10/25/2021 14:23:26'!
-dividirEntero: entero
+!Fraccion methodsFor: 'arithmetic operations -- private' stamp: 'YS 10/25/2021 18:20:42'!
+dividirAEntero: enteroADividir
 	| newNumerator |
-	newNumerator := denominator * entero.
+	newNumerator := denominator * enteroADividir.
 	^ newNumerator / numerator .! !
 
-!Fraccion methodsFor: 'arithmetic operations -- private' stamp: 'YS 10/25/2021 14:16:35'!
-dividirFraccion: fraccion
+!Fraccion methodsFor: 'arithmetic operations -- private' stamp: 'YS 10/25/2021 18:20:34'!
+dividirAFraccion: fraccionADividir
 	| newDenominator newNumerator |
-	newNumerator := denominator * fraccion numerator.
-	newDenominator := numerator * fraccion denominator.
+	newNumerator := denominator * fraccionADividir numerator.
+	newDenominator := numerator * fraccionADividir denominator.
 	^ newNumerator / newDenominator.! !
 
-!Fraccion methodsFor: 'arithmetic operations -- private' stamp: 'YS 10/25/2021 13:43:31'!
-multiplicarEntero: entero
-	| newNumerator |
-	newNumerator := numerator * entero.
-	^ newNumerator / denominator.
+!Fraccion methodsFor: 'arithmetic operations -- private' stamp: 'YS 10/25/2021 18:23:56'!
+restarAEntero: unEntero
+	^Fraccion with: (unEntero * denominator) - numerator over: (denominator).
 	! !
 
-!Fraccion methodsFor: 'arithmetic operations -- private' stamp: 'YS 10/25/2021 13:44:05'!
-multiplicarFraccion: fraccion
-	| newNumerator newDenominator |
-	newNumerator := numerator * fraccion numerator.
-	newDenominator := denominator * fraccion denominator.
-	^ newNumerator / newDenominator.
-	! !
-
-!Fraccion methodsFor: 'arithmetic operations -- private' stamp: 'YS 10/25/2021 14:43:46'!
-restarEntero: entero
-	^Fraccion with: (entero * denominator) - numerator over: (denominator).
-	! !
-
-!Fraccion methodsFor: 'arithmetic operations -- private' stamp: 'YS 10/25/2021 14:28:01'!
-restarFraccion: fraccion
+!Fraccion methodsFor: 'arithmetic operations -- private' stamp: 'YS 10/25/2021 18:24:05'!
+restarAFraccion: unaFraccion
 	| newNumerator newDenominator |
 	
-	newNumerator := (denominator * fraccion numerator) - (numerator * fraccion denominator).
-	newDenominator := denominator * fraccion denominator.
+	newNumerator := (denominator * unaFraccion numerator) - (numerator * unaFraccion denominator).
+	newDenominator := denominator * unaFraccion denominator.
 	
 	^newNumerator / newDenominator ! !
 
-!Fraccion methodsFor: 'arithmetic operations -- private' stamp: 'YS 10/25/2021 13:40:39'!
-sumarEntero: entero
+!Fraccion methodsFor: 'arithmetic operations -- private' stamp: 'YS 10/25/2021 18:19:50'!
+serMultiplicadoPorUnEntero: unEntero
+	| newNumerator |
+	newNumerator := numerator * unEntero.
+	^ newNumerator / denominator.
+	! !
+
+!Fraccion methodsFor: 'arithmetic operations -- private' stamp: 'YS 10/25/2021 18:19:44'!
+serMultiplicadoPorUnaFraccion: unaFraccion
+	| newNumerator newDenominator |
+	newNumerator := numerator * unaFraccion numerator.
+	newDenominator := denominator * unaFraccion denominator.
+	^ newNumerator / newDenominator.
+	! !
+
+!Fraccion methodsFor: 'arithmetic operations -- private' stamp: 'YS 10/25/2021 18:19:35'!
+serSumadoPorUnEntero: unEntero
 	"comment stating purpose of message"
 
 	| newNumerator |
-	newNumerator := (entero * denominator) + numerator.
+	newNumerator := (unEntero * denominator) + numerator.
 	^ newNumerator / denominator.! !
 
-!Fraccion methodsFor: 'arithmetic operations -- private' stamp: 'YS 10/25/2021 13:36:06'!
-sumarFraccion: anAdder
+!Fraccion methodsFor: 'arithmetic operations -- private' stamp: 'YS 10/25/2021 18:19:25'!
+serSumadoPorUnaFraccion: unaFraccion
 	"comment stating purpose of message"
 
 	| newNumerator newDenominator |
-	newNumerator := ((anAdder numerator * denominator) + (numerator * anAdder denominator)).
-	newDenominator := (anAdder denominator * denominator).
+	newNumerator := ((unaFraccion numerator * denominator) + (numerator * unaFraccion denominator)).
+	newDenominator := (unaFraccion denominator * denominator).
 	^newNumerator / newDenominator.! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
